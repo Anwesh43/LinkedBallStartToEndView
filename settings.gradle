@@ -1,0 +1,3 @@
+include ':balltostartendview'
+include ':app'
+rootProject.name = "LinkedBallStartToEndView"
