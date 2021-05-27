@@ -171,11 +171,16 @@ class BallStartToEndView(ctx : Context) : View(ctx) {
         }
 
         fun update(cb : (Float) -> Unit) {
-
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
         }
 
         fun startUpdating(cb : () -> Unit) {
-
+            curr.startUpdating(cb)
         }
     }
 }
