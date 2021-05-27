@@ -161,7 +161,7 @@ class BallStartToEndView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class BallStartToEndView(var i : Int) {
+    data class BallStartToEnd(var i : Int) {
 
         private var curr : BSTENode = BSTENode(0)
         private var dir : Int = 1
@@ -181,6 +181,29 @@ class BallStartToEndView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : BallStartToEndView) {
+
+        private val animator : Animator = Animator(view)
+        private val bste : BallStartToEnd = BallStartToEnd(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bste.draw(canvas, paint)
+            animator.animate {
+                bste.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bste.startUpdating {
+                animator.start()
+            }
         }
     }
 }
