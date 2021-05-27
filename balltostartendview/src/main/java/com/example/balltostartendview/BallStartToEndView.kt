@@ -160,4 +160,22 @@ class BallStartToEndView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class BallStartToEndView(var i : Int) {
+
+        private var curr : BSTENode = BSTENode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+
+        }
+    }
 }
