@@ -208,4 +208,13 @@ class BallStartToEndView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BallStartToEndView {
+            val view : BallStartToEndView = BallStartToEndView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
