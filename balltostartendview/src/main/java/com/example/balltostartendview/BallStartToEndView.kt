@@ -17,11 +17,11 @@ val colors : Array<Int> = arrayOf(
 ).map {
     Color.parseColor(it)
 }.toTypedArray()
-val parts : Int = 4
+val parts : Int = 3
 val strokeFactor : Float = 90f
 val scGap : Float = 0.02f / parts
 val delay : Long = 20
-val sizeFactor : Float = 3.9f
+val sizeFactor : Float = 10.9f
 val backColor : Int = Color.parseColor("#BDBDBD")
 
 fun Int.inverse() : Float = 1f / this
@@ -41,10 +41,10 @@ fun Canvas.drawBallStartToEnd(scale : Float, w : Float, h : Float, paint : Paint
         save()
         scale(1f - 2 * j, 1f)
         translate(-w / 2 - 2 * r, 0f)
-        drawLine(0f, 0f, (w / 2) * (sf.divideScale(j, parts) - sf.divideScale(j + 1, parts)), 0f, paint)
+        drawLine(0f, 0f, (w / 2 + r) * (sf.divideScale(j, parts) - sf.divideScale(j + 1, parts)), 0f, paint)
         restore()
     }
-    drawCircle(-r - w / 2 + (w / 2) * (sf1 + sf3), 0f, r, paint)
+    drawCircle(-r - w / 2 + (w / 2 + r) * (sf1 + sf3), 0f, r, paint)
     restore()
 }
 
